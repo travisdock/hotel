@@ -1,0 +1,14 @@
+FROM ruby:3.2.1
+
+ENV APP_HOME="/app_home"
+WORKDIR $APP_HOME
+
+RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && apt-get install -y nodejs
+RUN npm install --global npm@9.6.1
+RUN npm install --global yarn
+
+
+EXPOSE 3000
+
+CMD ["yarn", "build", "--watch"]
+

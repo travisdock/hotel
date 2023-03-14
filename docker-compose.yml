@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:latest
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile
+    tty: true
+    stdin_open: true
+    environment:
+      RAILS_ENV: development
+    volumes:
+      - .:/app_home
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+  tailwind:
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile.tailwind
+    tty: true
+    volumes:
+      - .:/app_home
+    depends_on:
+      - web
+  yarn:
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile.yarn
+    tty: true
+    volumes:
+      - .:/app_home
+    depends_on:
+      - web
+volumes:
+  postgres: {}
