@@ -23,11 +23,12 @@ default: &default
 
 development:
   <<: *default
-  database: hotel_development
   host: postgres
+  database: hotel_development
 
 test:
   <<: *default
+  host: postgres
   database: hotel_test
 
 production:
