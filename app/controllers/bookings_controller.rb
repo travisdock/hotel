@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    @booking = Booking.new
+    @booking = Booking.new(start_date: Date.tomorrow, end_date: Date.tomorrow + 1)
   end
 
   # GET /bookings/1/edit
