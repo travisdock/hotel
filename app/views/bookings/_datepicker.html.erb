@@ -1,35 +1,36 @@
-<button class="divide-border flex w-full appearance-none justify-center divide-x rounded ltr:text-left rtl:divide-x-reverse rtl:text-right md:w-auto md:gap-2 lg:gap-3">
-  <div class="flex w-32 items-end justify-center md:w-auto md:ltr:pl-2 md:ltr:first-of-type:pl-0 md:rtl:pr-2 md:rtl:first-of-type:pr-0">
-    <span class="text-primary pr-1 text-5xl font-bold tabular-nums leading-none rtl:pl-1">
-      <%= booking.start_date.strftime("%-d") %>
-    </span>
-    <div class="flex flex-col">
-      <span class="block font-bold uppercase tabular-nums leading-none">
-        <%= booking.start_date.strftime("%b") %>
+<div data-controller="modal datepicker">
+  <button data-action="click->modal#on" class="divide-border flex w-full appearance-none justify-center divide-x rounded ltr:text-left rtl:divide-x-reverse rtl:text-right md:w-auto md:gap-2 lg:gap-3">
+    <div class="flex w-32 items-end justify-center md:w-auto md:ltr:pl-2 md:ltr:first-of-type:pl-0 md:rtl:pr-2 md:rtl:first-of-type:pr-0">
+      <span class="text-primary pr-1 text-5xl font-bold tabular-nums leading-none rtl:pl-1">
+        <%= booking.start_date.strftime("%-d") %>
       </span>
-      <span class="block uppercase tabular-nums">
-        <%= booking.start_date.strftime("%^a") %>
-      </span>
+      <div class="flex flex-col">
+        <span data-controller="modal" class="block font-bold uppercase tabular-nums leading-none">
+          <%= booking.start_date.strftime("%b") %>
+        </span>
+        <span class="block uppercase tabular-nums">
+          <%= booking.start_date.strftime("%^a") %>
+        </span>
+      </div>
     </div>
-  </div>
-  <div class="flex w-32 items-end justify-center md:w-auto md:ltr:pl-2 md:ltr:first-of-type:pl-0 md:rtl:pr-2 md:rtl:first-of-type:pr-0">
-    <span class="text-primary pr-1 text-5xl font-bold tabular-nums leading-none rtl:pl-1">
-      <%= booking.end_date.strftime("%-d") %>
-    </span>
-    <div class="flex flex-col">
-      <span class="block font-bold uppercase tabular-nums leading-none">
-        <%= booking.end_date.strftime("%b") %>
+    <div class="flex w-32 items-end justify-center md:w-auto md:ltr:pl-2 md:ltr:first-of-type:pl-0 md:rtl:pr-2 md:rtl:first-of-type:pr-0">
+      <span class="text-primary pr-1 text-5xl font-bold tabular-nums leading-none rtl:pl-1">
+        <%= booking.end_date.strftime("%-d") %>
       </span>
-      <span class="block uppercase tabular-nums">
-        <%= booking.end_date.strftime("%^a") %>
-      </span>
+      <div class="flex flex-col">
+        <span class="block font-bold uppercase tabular-nums leading-none">
+          <%= booking.end_date.strftime("%b") %>
+        </span>
+        <span class="block uppercase tabular-nums">
+          <%= booking.end_date.strftime("%^a") %>
+        </span>
+      </div>
     </div>
-  </div>
-</button>
+  </button>
 
-<div id="calendarModal" class="modal fixed z-10 top-0 right-0 w-full h-full overflow-auto pt-32 bg-neutral-600/50">
-  <div class="modal-content relative m-auto p-0 border w-3/5 bg-white rounded">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+  <div data-action="click->modal#off" data-modal-target="modal" id="calendarModal" class="hidden modal fixed z-10 top-0 right-0 w-full h-full overflow-auto pt-32 bg-neutral-600/50">
+    <div data-modal-target="content" class="relative m-auto p-0 border w-3/5 bg-white rounded">
+      <%= render "calendar" %>
+    </div>
   </div>
 </div>

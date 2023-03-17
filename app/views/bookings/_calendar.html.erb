@@ -1,0 +1,21 @@
+<h2 class="mb-2 block text-center text-lg font-extrabold"><%= Date.today.strftime("%B %Y") %></h2>
+<table class="m-auto">
+  <thead>
+    <% Date::DAYNAMES.each do |day| %>
+      <th><%= day[0..2] %></th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% calendar_days(Date.today).each_slice(7) do |week| %>
+      <tr>
+        <% week.each do |day| %>
+          <td class="p-0">
+            <button type="button" data-action="click->datepicker#selectDate" data-date="<%= day.iso8601 %>" class="text h-[37px] w-full min-w-[37px] text-center uppercase disabled:cursor-default border">
+              <%= day.day %>
+            </button>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
