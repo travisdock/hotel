@@ -1,4 +1,4 @@
-<h2 class="mb-2 block text-center text-lg font-extrabold"><%= Date.today.strftime("%B %Y") %></h2>
+<h2 class="mb-2 block text-center text-lg font-extrabold"><%= start_date.strftime("%B %Y") %></h2>
 <table class="m-auto">
   <thead>
     <% Date::DAYNAMES.each do |day| %>
@@ -6,7 +6,7 @@
     <% end %>
   </thead>
   <tbody>
-    <% calendar_days(Date.today).each_slice(7) do |week| %>
+    <% calendar_days(start_date).each_slice(7) do |week| %>
       <tr>
         <% week.each do |day| %>
           <td class="p-0">

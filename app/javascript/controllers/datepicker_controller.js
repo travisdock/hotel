@@ -19,7 +19,8 @@ export default class extends Controller {
       this.clicks++
     } else {
       if (this.startDate === event.target.dataset.date || this.startDate > event.target.dataset.date) {
-        this.clicks = 0
+        event.target.classList.add("bg-red-500");
+        setTimeout(() => { event.target.classList.remove("bg-red-500"); }, 1000);
         this.endDate = null
       } else {
         this.endDate = event.target.dataset.date
@@ -31,3 +32,4 @@ export default class extends Controller {
     }
   }
 }
+

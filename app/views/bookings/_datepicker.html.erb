@@ -30,7 +30,8 @@
 
   <div data-action="click->modal#off" data-modal-target="modal" id="calendarModal" class="hidden modal fixed z-10 top-0 right-0 w-full h-full overflow-auto pt-32 bg-neutral-600/50">
     <div data-modal-target="content" class="relative m-auto p-0 border w-3/5 bg-white rounded">
-      <%= render "calendar" %>
+      <%= render "calendar", start_date: booking.start_date %>
+      <%= render "calendar", start_date: booking.start_date.beginning_of_month.next_month %>
     </div>
   </div>
 </div>
