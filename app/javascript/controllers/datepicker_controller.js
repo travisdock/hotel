@@ -13,7 +13,6 @@ export default class extends Controller {
   selectDate(event) {
     if (this.clicks === 0) {
       this.startDate = event.target.dataset.date;
-      console.log(`Start date: ${this.startDate}`);
       event.target.classList.add("bg-blue-500");
       var startDateEl = document.getElementById("booking_start_date");
       startDateEl.setAttribute("value", this.startDate);
