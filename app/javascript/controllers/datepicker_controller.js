@@ -27,6 +27,7 @@ export default class extends Controller {
         var startDateEl = document.getElementById("booking_end_date");
         startDateEl.setAttribute("value", this.endDate);
         this.clicks = 0
+        document.getElementById("refresh").click();
       }
     }
   }

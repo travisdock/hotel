@@ -1,4 +1,4 @@
-<%= form_with(model: booking, class: "relative flex flex-wrap items-end justify-center gap-3 lg:flex-nowrap") do |form| %>
+<%= form_with(model: booking, id: "new_booking", class: "relative flex flex-wrap items-end justify-center gap-3 lg:flex-nowrap") do |form| %>
   <% if booking.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
@@ -20,5 +20,6 @@
   </div>
   <div>
     <%= form.submit "Check Rooms and Rates", { class: "hover:cursor-pointer bg-blue-900 text-white font-semibold py-2 px-4 border-gray-500 rounded shadow md:w-auto md:flex-1" } %>
+    <%= form.submit "Refresh Booking", { id: "refresh", class: "hidden", formaction: "bookings/refresh" } %>
   </div>
 <% end %>

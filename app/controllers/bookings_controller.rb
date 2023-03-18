@@ -15,6 +15,13 @@ class BookingsController < ApplicationController
     @booking = Booking.new(start_date: Date.tomorrow, end_date: Date.tomorrow + 1)
   end
 
+  def refresh
+    @booking = Booking.new(booking_params)
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("new_booking", partial: "form", locals: { booking: @booking }) }
+    end
+  end
+
   # GET /bookings/1/edit
   def edit
   end
