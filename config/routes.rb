@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  resources :reservations
-  resources :rooms
-  resources :bookings do
+  resources :reservations do
     post :refresh, on: :collection
   end
+  resources :rooms
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "bookings#new"
+  root "reservations#new"
 end

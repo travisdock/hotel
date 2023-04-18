@@ -12,7 +12,14 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
-    @reservation = Reservation.new
+    @reservation = Reservation.new(check_in: Date.today, check_out: Date.today + 1)
+  end
+
+  def refresh
+    @reservation = Reservation.new(reservation_params)
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("new_reservation", partial: "form", locals: { reservation: @reservation }) }
+    end
   end
 
   # GET /reservations/1/edit

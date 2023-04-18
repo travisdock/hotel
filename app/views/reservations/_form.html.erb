@@ -1,7 +1,7 @@
-<%= form_with(model: reservation) do |form| %>
+<%= form_with(model: reservation, id: "new_reservation", class: "relative flex flex-wrap items-end justify-center gap-3 lg:flex-nowrap") do |form| %>
   <% if reservation.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this booking from being saved:</h2>
 
       <ul>
         <% reservation.errors.each do |error| %>
@@ -11,22 +11,14 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :room_id, style: "display: block" %>
-    <%= form.text_field :room_id %>
-  </div>
+  <%= render "datepicker", form: form, reservation: reservation %>
+  <%= form.date_field :check_in, class: "hidden" %>
+  <%= form.date_field :check_out, class: "hidden" %>
 
   <div>
-    <%= form.label :check_in, style: "display: block" %>
-    <%= form.date_field :check_in %>
+    <button class="text-blue-900 bg-white font-semibold py-2 px-4 hover:font-bold border border-gray-500 rounded shadow md:w-auto md:flex-1"> Guests </button>
   </div>
-
   <div>
-    <%= form.label :check_out, style: "display: block" %>
-    <%= form.date_field :check_out %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Check Rooms and Rates", { class: "hover:cursor-pointer bg-blue-900 text-white font-semibold py-2 px-4 border-gray-500 rounded shadow md:w-auto md:flex-1" } %>
   </div>
 <% end %>

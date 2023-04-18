@@ -14,7 +14,7 @@ export default class extends Controller {
     if (this.clicks === 0) {
       this.startDate = event.target.dataset.date;
       event.target.classList.add("bg-blue-500");
-      var startDateEl = document.getElementById("booking_start_date");
+      var startDateEl = document.getElementById("reservation_check_in");
       startDateEl.setAttribute("value", this.startDate);
       this.clicks++
     } else {
@@ -24,11 +24,11 @@ export default class extends Controller {
         this.endDate = null
       } else {
         this.endDate = event.target.dataset.date
-        var startDateEl = document.getElementById("booking_end_date");
+        var startDateEl = document.getElementById("reservation_check_out");
         startDateEl.setAttribute("value", this.endDate);
         this.clicks = 0
-        var form = document.getElementById("new_booking")
-        form.action = "/bookings/refresh"
+        var form = document.getElementById("new_reservation")
+        form.action = "/reservations/refresh"
         form.requestSubmit()
       }
     }
