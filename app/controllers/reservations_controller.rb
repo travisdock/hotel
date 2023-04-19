@@ -15,6 +15,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(check_in: Date.today, check_out: Date.today + 1)
   end
 
+  # POST /reservations/refresh
   def refresh
     @reservation = Reservation.new(reservation_params)
     respond_to do |format|
@@ -24,6 +25,12 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1/edit
   def edit
+  end
+
+  # POST /reservations/available_rooms
+  def available_rooms
+    @reservation = Reservation.new(reservation_params)
+    @rooms = Room.available_on(@reservation.check_in, @reservation.check_out)
   end
 
   # POST /reservations
