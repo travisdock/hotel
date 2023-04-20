@@ -31,6 +31,9 @@ class ReservationsController < ApplicationController
   def available_rooms
     @reservation = Reservation.new(reservation_params)
     @rooms = Room.available_on(@reservation.check_in, @reservation.check_out)
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("new_reservation", partial: "available_rooms", locals: { reservation: @reservation, rooms: @rooms}) }
+    end
   end
 
   # POST /reservations
