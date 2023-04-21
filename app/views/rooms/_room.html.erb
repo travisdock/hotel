@@ -1,12 +1,12 @@
 <div id="<%= dom_id room %>">
   <p>
-    <strong>Room type:</strong>
-    <%= room.room_type %>
+    <strong>Room Name:</strong>
+    <%= room.name%>
   </p>
 
   <p>
-    <strong>Room number:</strong>
-    <%= room.room_number %>
+    <strong>Room Types:</strong>
+    <%= room.types.map(&:name) %>
   </p>
 
 </div>

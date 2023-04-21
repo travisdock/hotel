@@ -12,13 +12,13 @@
   <% end %>
 
   <div>
-    <%= form.label :room_type, style: "display: block" %>
-    <%= form.text_field :room_type %>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :room_number, style: "display: block" %>
-    <%= form.text_field :room_number %>
+    <%= form.label :type_ids, "Types", style: "display: block" %>
+    <%= form.collection_check_boxes :type_ids, Type.all, :id, :name %>
   </div>
 
   <div>
