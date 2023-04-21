@@ -10,16 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_17_113818) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_21_110318) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bookings", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "reservations", force: :cascade do |t|
     t.bigint "room_id", null: false
@@ -30,12 +23,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_113818) do
     t.index ["room_id"], name: "index_reservations_on_room_id"
   end
 
+  create_table "room_types", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.bigint "type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_types_on_room_id"
+    t.index ["type_id"], name: "index_room_types_on_type_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
-    t.string "room_type"
-    t.string "room_number"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "reservations", "rooms"
+  add_foreign_key "room_types", "rooms"
+  add_foreign_key "room_types", "types"
 end
