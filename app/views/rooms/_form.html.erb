@@ -17,8 +17,8 @@
   </div>
 
   <div>
-    <%= form.label :type_ids, "Types", style: "display: block" %>
-    <%= form.collection_check_boxes :type_ids, Type.all, :id, :name %>
+    <%= form.label :classification_ids, "Types", style: "display: block" %>
+    <%= form.collection_check_boxes :classification_ids, Classification.all, :id, :name %>
   </div>
 
   <div>

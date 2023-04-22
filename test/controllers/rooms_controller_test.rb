@@ -17,7 +17,7 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create room" do
     assert_difference("Room.count") do
-      post rooms_url, params: { room: { name: @room.name, type_ids: @room.types.map(&:id) } }
+      post rooms_url, params: { room: { name: @room.name, classification_ids: @room.classifications.map(&:id) } }
     end
 
     assert_redirected_to room_url(Room.last)
@@ -34,7 +34,7 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update room" do
-    patch room_url(@room), params: { room: { name: @room.name, type_ids: @room.types.map(&:id) } }
+    patch room_url(@room), params: { room: { name: @room.name, classification_ids: @room.classifications.map(&:id) } }
     assert_redirected_to room_url(@room)
   end
 
