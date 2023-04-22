@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :classifications
   resources :reservations do
     post :refresh, on: :collection
     post :available_rooms, on: :collection
