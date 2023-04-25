@@ -11,4 +11,18 @@ class RoomTest < ActiveSupport::TestCase
     assert_includes available_rooms, room_3
     assert_not_includes available_rooms, room_1
   end
+
+  test "finds availability leading up to existing reservation" do
+    room_1 = Room.create(name: "test")
+    reservation_1 = Reservation.create(room_id: room_1.id, check_in: Date.today + 1, check_out: Date.today + 2)
+    available_rooms = Room.available_on(Date.today, Date.today + 1)
+    assert_includes available_rooms, room_1
+  end
+
+  test "finds availability after existing reservation" do
+    room_1 = Room.create(name: "test")
+    reservation_1 = Reservation.create(room_id: room_1.id, check_in: Date.today - 2, check_out: Date.today)
+    available_rooms = Room.available_on(Date.today, Date.today + 1)
+    assert_includes available_rooms, room_1
+  end
 end
