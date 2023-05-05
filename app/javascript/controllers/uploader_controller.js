@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   addImage(event) {
     const photoInput = document.getElementById('photoInput');
-    const previewContainer = document.getElementById('previewContainer');
+    const previewContainer = document.getElementById('preview-container');
     const selectedFiles = new Map();
 
     const files = event.target.files;
