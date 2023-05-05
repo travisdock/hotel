@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#previewContainer {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  margin: 1.5rem 0;
+  padding: 0.75rem;
+}
+
+.preview-item {
+  position: relative;
+}
+
+.preview-image {
+  background: #fff;
+  border: 1px solid #777;
+  border-radius: 0.25rem;
+  box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+  max-width: 140px;
+  padding: 0.75rem;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: grey;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 2px 5px;
+  z-index: 10;
+}

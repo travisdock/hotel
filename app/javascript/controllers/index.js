@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
+
+import UploaderController from "./uploader_controller"
+application.register("uploader", UploaderController)

@@ -21,6 +21,15 @@
     <%= form.collection_check_boxes :classification_ids, Classification.all, :id, :name %>
   </div>
 
+  <div data-controller="uploader">
+    <div class="photos">
+      <%= form.label :images, style: "display: block" %>
+      <%= form.file_field :images, multiple: true, id: "photoInput", data: { action: "uploader#addImage" }%>
+    </div>
+    <div id="previewContainer" class="flex flex-wrap justify-center">
+    </div>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
