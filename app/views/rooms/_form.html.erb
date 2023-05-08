@@ -23,10 +23,19 @@
 
   <div data-controller="uploader">
     <div class="photos">
-      <%= form.label :images, style: "display: block" %>
+      <p>Existing Images</p>
+      <div class="flex flex-wrap justify-around bg-slate-200 border border-black p-3 my-2">
+        <% room.images.each do |image| %>
+          <div class="preview-item">
+            <%= image_tag image.variant(:portfolio), class: "preview-image" %>
+            <%= link_to "X", room_destroy_image_path(room_id: room, image_id: image), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" },  class: "remove-btn" %>
+          </div>
+        <% end %>
+      </div>
+      <%= form.label :images, "Add Images", style: "display: block" %>
       <%= form.file_field :images, multiple: true, id: "photoInput", data: { action: "uploader#addImage" }%>
     </div>
-    <div id="preview-container" class="flex flex-wrap justify-center">
+    <div id="preview-container" class="flex flex-wrap justify-around bg-slate-200 border border-black p-3 my-2">
     </div>
   </div>
 

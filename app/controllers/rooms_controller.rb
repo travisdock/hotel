@@ -32,7 +32,10 @@ class RoomsController < ApplicationController
 
   # PATCH/PUT /rooms/1
   def update
-    if @room.update(room_params)
+    unless @room.images.attach(params[:room][:images])
+      render :edit, status: :unprocessable_entity and return
+    end
+    if @room.update(room_params.except(:images))
       redirect_to @room, notice: "Room was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -43,6 +46,12 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     redirect_to rooms_url, notice: "Room was successfully destroyed."
+  end
+
+  def remove_image
+    @room = Room.find(params[:room_id])
+    ActiveStorage::Attachment.find(params[:image_id]).purge
+    redirect_to edit_room_path(@room), notice: "Image was successfully removed."
   end
 
   private

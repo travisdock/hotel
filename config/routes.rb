@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     post :refresh, on: :collection
     post :available_rooms, on: :collection
   end
-  resources :rooms
+  resources :rooms do
+    delete '/images/:image_id', to: 'rooms#remove_image', as: 'destroy_image'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
