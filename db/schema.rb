@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_21_110322) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_21_110323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_110322) do
 
   create_table "classifications", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pricing_strategies", force: :cascade do |t|
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
+    t.decimal "multiplier", precision: 6, scale: 4
+    t.decimal "min_occupancy", precision: 4, scale: 2
+    t.decimal "max_occupancy", precision: 4, scale: 2
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "distance_in_time"
+    t.integer "distance_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

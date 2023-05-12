@@ -1,0 +1,52 @@
+<%= form_with(model: pricing_strategy) do |form| %>
+  <% if pricing_strategy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pricing_strategy.errors.count, "error") %> prohibited this pricing_strategy from being saved:</h2>
+
+      <ul>
+        <% pricing_strategy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :multiplier, style: "display: block" %>
+    <%= form.text_field :multiplier %>
+  </div>
+
+  <div>
+    <%= form.label :min_occupancy, style: "display: block" %>
+    <%= form.text_field :min_occupancy %>
+  </div>
+
+  <div>
+    <%= form.label :max_occupancy, style: "display: block" %>
+    <%= form.text_field :max_occupancy %>
+  </div>
+
+  <div>
+    <%= form.label :start_date, style: "display: block" %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div>
+    <%= form.label :end_date, style: "display: block" %>
+    <%= form.date_field :end_date %>
+  </div>
+
+  <div>
+    <%= form.label :distance_in_time, style: "display: block" %>
+    <%= form.number_field :distance_in_time %>
+  </div>
+
+  <div>
+    <%= form.label :distance_unit, style: "display: block" %>
+    <%= form.number_field :distance_unit %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

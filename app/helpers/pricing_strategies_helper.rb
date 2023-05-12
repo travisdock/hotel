@@ -1,0 +1,2 @@
+module PricingStrategiesHelper
+end

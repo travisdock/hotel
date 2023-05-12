@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pricing_strategies
   resources :classifications
   resources :reservations do
     post :refresh, on: :collection

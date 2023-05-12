@@ -1,0 +1,2 @@
+class PricingStrategy < ApplicationRecord
+end

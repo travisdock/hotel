@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pricing_strategy %>
+
+<div>
+  <%= link_to "Edit this pricing strategy", edit_pricing_strategy_path(@pricing_strategy) %> |
+  <%= link_to "Back to pricing strategies", pricing_strategies_path %>
+
+  <%= button_to "Destroy this pricing strategy", @pricing_strategy, method: :delete %>
+</div>
