@@ -3,6 +3,8 @@ class Room < ApplicationRecord
   has_many :classifications, through: :room_classifications
   has_many :reservations, dependent: :destroy
 
+  monetize :base_price_cents
+
   has_many_attached :images do |attachable|
     attachable.variant :portfolio, resize_to_limit: [600, 400]
   end

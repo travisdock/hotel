@@ -21,6 +21,11 @@
     <%= form.collection_check_boxes :classification_ids, Classification.all, :id, :name %>
   </div>
 
+  <div>
+    <%= form.label :base_price, style: "display: block" %>
+    <%= form.text_field :base_price %>
+  </div>
+
   <div data-controller="uploader">
     <div class="photos">
       <p>Existing Images</p>

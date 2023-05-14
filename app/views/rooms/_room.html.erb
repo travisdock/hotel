@@ -9,6 +9,11 @@
     <%= room.classifications.map(&:name) %>
   </p>
 
+  <p>
+    <strong>Room Base Price:</strong>
+    <%= room.base_price %>
+  </p>
+
   <div>
     <% room.images.each do |image| %>
       <%= image_tag image.variant(:portfolio) %>
