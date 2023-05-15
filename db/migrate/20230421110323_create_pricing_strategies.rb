@@ -8,7 +8,7 @@ class CreatePricingStrategies < ActiveRecord::Migration[7.0]
       t.date :start_date
       t.date :end_date
       t.integer :distance_in_time
-      t.integer :distance_unit
+      t.string :distance_unit
 
       t.timestamps
     end

@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_110324) do
     t.date "start_date"
     t.date "end_date"
     t.integer "distance_in_time"
-    t.integer "distance_unit"
+    t.string "distance_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

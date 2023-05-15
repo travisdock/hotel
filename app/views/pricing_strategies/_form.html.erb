@@ -11,42 +11,34 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :multiplier, style: "display: block" %>
-    <%= form.text_field :multiplier %>
+  <div class="flex my-1">
+    <p> If occupancy is greater than &nbsp;</p>
+    <%= form.number_field :min_occupancy, max: 100, class: "w-10 border border-gray-400 rounded-lg px-2" %>
+    <p class="ml-0.5"> %, but less than &nbsp;</p>
+    <%= form.number_field :max_occupancy, max: 100, class: "w-10 border border-gray-400 rounded-lg px-2" %>
+    <p class="ml-0.5"> %</p>
   </div>
-
-  <div>
-    <%= form.label :min_occupancy, style: "display: block" %>
-    <%= form.text_field :min_occupancy %>
+  <div class="flex my-1">
+    <p>from &nbsp;</p>
+    <%= form.date_field :start_date, class: "border border-gray-400 rounded-lg px-1" %>
+    <p>&nbsp; to &nbsp;</p>
+    <%= form.date_field :end_date, class: "border border-gray-400 rounded-lg px-1" %>
   </div>
-
-  <div>
-    <%= form.label :max_occupancy, style: "display: block" %>
-    <%= form.text_field :max_occupancy %>
+  <div class="flex my-1">
+    <b>OR</b>
   </div>
-
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
+  <div class="flex my-1">
+    <%= form.number_field :distance_in_time, step: 1, class: "w-10 border border-gray-400 rounded-lg px-2" %>
+    <p>&nbsp;</p>
+    <%= form.select :distance_unit, options_for_select(['days', 'weeks', 'months', 'years']), {}, { class: "border border-gray-400 rounded-lg px-1" } %>
+    <p>&nbsp; from now</p>
   </div>
-
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
+  <div class="flex my-1">
+    <p> the base price will be multiplied by &nbsp;</p>
+    <%= form.number_field :multiplier, step: 0.01, class: "w-12 border border-gray-400 rounded-lg px-2" %>
   </div>
-
-  <div>
-    <%= form.label :distance_in_time, style: "display: block" %>
-    <%= form.number_field :distance_in_time %>
-  </div>
-
-  <div>
-    <%= form.label :distance_unit, style: "display: block" %>
-    <%= form.number_field :distance_unit %>
-  </div>
-
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
